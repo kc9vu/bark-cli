@@ -1,15 +1,16 @@
 package utils
 
 import (
-	"bytes"
-	"errors"
 	"os"
-	"os/exec"
-	"os/user"
-	"runtime"
-	"strings"
+	"path/filepath"
 )
 
+func Executable() string {
+	dir, _ = filepath.Abs(filepath.Dir(os.Args[0]))
+	return dir
+}
+
+/*
 // Home returns the home directory for the executing user.
 //
 // This uses an OS-specific method for discovering the home directory.
@@ -66,3 +67,4 @@ func homeWindows() (string, error) {
 
 	return home, nil
 }
+*/

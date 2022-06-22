@@ -1,7 +1,7 @@
 package flags
 
 import (
-	"github.com/jasonkayzk/bark-cli/utils"
+	"github.com/kc9vu/bark-cli/utils"
 	"github.com/urfave/cli/v2"
 	"path/filepath"
 )
@@ -20,7 +20,7 @@ var keyValue string
 
 // init the config flags: host, port & key from DefaultConfigPath or Default value
 func init() {
-	DefaultConfigPath = utils.Home() + string(filepath.Separator) + "bark-cli" + string(filepath.Separator) + "bark-cli.json"
+	DefaultConfigPath = utils.ExecutePath() + string(filepath.Separator) + "bark-cli.json"
 	if utils.ConfigExist(DefaultConfigPath) {
 		config, err := utils.LoadConfig(DefaultConfigPath)
 		if err != nil {
@@ -37,7 +37,7 @@ func init() {
 		}
 		if config.Port > 0 {
 			portValue = config.Port
-		}else {
+		} else {
 			portValue = PortValueDefault
 		}
 		if config.Key != "" {
