@@ -4,20 +4,20 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"github.com/jasonkayzk/bark-cli/flags"
+	"github.com/kc9vu/bark-cli/flags"
 	"log"
 	"net/url"
 	"strconv"
 	"strings"
 
-	"github.com/jasonkayzk/bark-cli/utils"
+	"github.com/kc9vu/bark-cli/utils"
 
 	"github.com/urfave/cli/v2"
 )
 
 const (
 	barkCommandUsage = `Send bark request
-	example: (default config) 
+	example: (default config)
 		bark-cli [-X POST/GET] [-b=bark-body] [-t=bark-title] bark
 	example: (config with flags)
 		bark-cli [-X POST/GET] [--host=https://api.day.app] [-p=443] [-k=xxxxxxxxxxx] [...other notification param] bark
@@ -26,7 +26,7 @@ const (
 `
 
 	barkUrlUsage = `Send barkUrl request
-	example: (default config) 
+	example: (default config)
 		bark-cli [-X POST/GET] [-t=urlBaidu-title] [-b=test-baiduUrl] -u=https://www.baidu.com url
 	example: (config with flags)
 		bark-cli [-X POST/GET] [--host=https://api.day.app] [-p=443] [-k=xxxxxxxxxxx] [...other notification param] url
@@ -35,7 +35,7 @@ const (
 `
 
 	barkCopyUsage = `Send barkCopy request
-	example: (default config) 
+	example: (default config)
 		bark-cli [-X POST/GET] [-t=copy-yourCode] [-b=code9527] -c=9527 -a=true copy
 	example: (config with flags)
 		bark-cli [-X POST/GET] [--host=https://api.day.app] [-p=443] [-k=xxxxxxxxxxx] [...other notification param] copy
@@ -51,7 +51,7 @@ const (
 `
 
 	configSetUsage = `Generator(Override) bark-cli config file at $HOME/bark-cli/bark-cli.json
-	example: 
+	example:
 		bark-cli [--host=https://api.day.app] [-p=443] -k=xxxxxxxxxxx config set
 `
 

@@ -1,7 +1,7 @@
 package test
 
 import (
-	"github.com/jasonkayzk/bark-cli/utils"
+	"github.com/kc9vu/bark-cli/utils"
 	"testing"
 )
 
