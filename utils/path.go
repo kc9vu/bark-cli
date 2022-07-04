@@ -6,7 +6,7 @@ import (
 )
 
 func Executable() string {
-	dir, _ = filepath.Abs(filepath.Dir(os.Args[0]))
+	dir, _ := filepath.Abs(filepath.Dir(os.Args[0]))
 	return dir
 }
 
