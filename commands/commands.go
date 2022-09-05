@@ -1,18 +1,17 @@
 package commands
 
 import (
+	"bark-cli/flags"
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"github.com/kc9vu/bark-cli/flags"
+	"github.com/urfave/cli/v2"
 	"log"
 	"net/url"
 	"strconv"
 	"strings"
 
-	"github.com/kc9vu/bark-cli/utils"
-
-	"github.com/urfave/cli/v2"
+	"bark-cli/utils"
 )
 
 const (
@@ -216,12 +215,12 @@ func setCopyNotificationCommand(app *cli.App) {
 				"title": []string{c.String("title")},
 				"body":  []string{c.String("body")},
 				"copy":  []string{c.String("barkCopy")},
-				"automaticallyCopy": []string{string((func(b bool) int64 {
+				"automaticallyCopy": []string{strconv.FormatInt((func(b bool) int64 {
 					if b {
 						return 1
 					}
 					return 0
-				})(c.Bool("autoCopy")))},
+				})(c.Bool("autoCopy")), 10)},
 			})
 			log.Printf("Post url: %s\n", postUrl)
 			if err != nil {

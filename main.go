@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/kc9vu/bark-cli/commands"
-	"github.com/kc9vu/bark-cli/flags"
+	"bark-cli/commands"
+	"bark-cli/flags"
 	"github.com/urfave/cli/v2"
 	"log"
 	"os"

@@ -1,26 +1,25 @@
 package utils
 
 import (
+	"bytes"
+	"errors"
 	"os"
-	"path/filepath"
+	"os/exec"
+	"runtime"
+	"strings"
 )
 
-func Executable() string {
-	dir, _ := filepath.Abs(filepath.Dir(os.Args[0]))
-	return dir
-}
-
-/*
 // Home returns the home directory for the executing user.
 //
 // This uses an OS-specific method for discovering the home directory.
 // An error is returned if a home directory cannot be detected.
 func Home() string {
-	current, err := user.Current()
-	if nil == err {
+	/*
+		current, err := user.Current()
+		if nil == err {
 		return current.HomeDir
-	}
-
+		}
+	*/
 	// cross compile support
 	if "windows" == runtime.GOOS {
 		windows, _ := homeWindows()
@@ -28,7 +27,7 @@ func Home() string {
 	}
 
 	// Unix-like system, so just assume Unix
-	unix, err := homeUnix()
+	unix, _ := homeUnix()
 	return unix
 }
 
@@ -55,16 +54,16 @@ func homeUnix() (string, error) {
 }
 
 func homeWindows() (string, error) {
-	drive := os.Getenv("HOMEDRIVE")
-	path := os.Getenv("HOMEPATH")
-	home := drive + path
-	if drive == "" || path == "" {
-		home = os.Getenv("USERPROFILE")
-	}
+	//drive := os.Getenv("HOMEDRIVE")
+	//path := os.Getenv("HOMEPATH")
+	//home := drive + path
+	//if drive == "" || path == "" {
+	//	home = os.Getenv("USERPROFILE")
+	//}
+	home := os.Getenv("APPDATA")
 	if home == "" {
-		return "", errors.New("HOMEDRIVE, HOMEPATH, and USERPROFILE are blank")
+		return "", errors.New("APPDATA are blank")
 	}
 
 	return home, nil
 }
-*/
